@@ -1,3 +1,29 @@
 from django.db import models
+from django.urls import reverse
 
-# Create your models here.
+
+class Category(models.Model):
+	name = models.CharField(max_length=200)
+
+	# def get_absolute_url(self):
+	# 	return reverse('question_page', args=[self.name])
+
+	def __str__(self):
+		return self.name
+
+
+class Question(models.Model):
+	category = models.ForeignKey(Category, on_delete=models.CASCADE)
+	question_text = models.CharField(max_length=200)
+
+	def __str__(self):
+		return self.question_text
+
+
+class Choice(models.Model):
+	question = models.ForeignKey(Question, on_delete=models.CASCADE)
+	choice_text = models.CharField(max_length=200)
+	is_correct_answer = models.BooleanField()
+
+	def __str__(self):
+		return self.choice_text

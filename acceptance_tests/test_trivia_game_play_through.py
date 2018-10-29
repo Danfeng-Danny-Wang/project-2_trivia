@@ -34,7 +34,7 @@ class NewPlayerTest(StaticLiveServerTestCase):
 
 		# She clicks history, and a question shows up. On the side shows: "score: 0".
 		sub_header = self.browser.find_element_by_tag_name('h3')
-		self.browser.find_element_by_id('history').click()
+		self.browser.find_element_by_id('History').click()
 		question_text = self.browser.find_element_by_tag_name('h3')
 		self.assertNotEqual(sub_header, question_text)
 

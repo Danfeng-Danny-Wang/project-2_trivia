@@ -7,7 +7,7 @@
 {% block table %}
 	<table id="category_table">
 		{% for category in categories %}
-			<tr><td><button type="submit" value="{{ category.name }}"></button></td></tr>
+			<tr><td><button type="submit" value="{{ category.name }}" id="{{ category.name }}"></button></td></tr>
 		{% endfor %}
 	</table>
 {% endblock %}

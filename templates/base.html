@@ -15,10 +15,9 @@
 
 	<div>
 		<h3>{% block question_text %}{% endblock %}</h3>
-		<form method="POST">
-			{% csrf_token %}
-			{% block table %}
-			{% endblock %}
-		</form>
+		{% block error_message %}
+		{% endblock %}
+		{% block choice_content %}
+		{% endblock %}
 	</div>
 </html>

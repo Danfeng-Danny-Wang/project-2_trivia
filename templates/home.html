@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block question_text %}Choose a category!{% endblock %}
+
+{% block choice_content %}
+<ul>
+	{% for category in object_list %}
+		<li><a href="{% url 'trivia:question_page' category.name 1 %}">{{ category.name }}</a></li>
+	{% endfor %}
+</ul>
+{% endblock %}

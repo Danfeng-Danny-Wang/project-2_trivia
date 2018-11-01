@@ -1,12 +1,12 @@
 from django.db import models
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 
 
 class Category(models.Model):
 	name = models.CharField(max_length=200)
 
 	# def get_absolute_url(self):
-	# 	return reverse('question_page', args=[self.name])
+	# 	return reverse('home')
 
 	def __str__(self):
 		return self.name
@@ -14,10 +14,13 @@ class Category(models.Model):
 
 class Question(models.Model):
 	category = models.ForeignKey(Category, on_delete=models.CASCADE)
-	question_text = models.CharField(max_length=200)
+	question_text = models.TextField(max_length=200)
 
 	def __str__(self):
 		return self.question_text
+
+	def get_absulute_url(self):
+		return reverse_lazy('question_page', args=[str(category.name), str(self.id)])
 
 
 class Choice(models.Model):

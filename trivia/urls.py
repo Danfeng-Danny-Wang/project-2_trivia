@@ -1,12 +1,12 @@
 from django.urls import path
 
-from trivia import views
+from .views import HomeListView, QuestionDetailView, check_answer
 
 
 app_name = 'trivia'
 
 urlpatterns = [
-	path('', views.home_page, name='home'),
-	path('<str:name>/<int:question_id>/', views.question_page, name='question'),
-	path('<str:name>/<int:question_id>/answer/', views.answer, name='answer'),
+	path('', HomeListView.as_view(), name='home'),
+	path('<str:category_name>/<int:pk>/', QuestionDetailView.as_view(), name='question_page'),
+	path('<str:category_name>/<int:pk>/check/', check_answer, name='check_answer'),
 ]

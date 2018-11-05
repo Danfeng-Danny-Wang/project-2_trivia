@@ -1,4 +1,4 @@
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, TemplateView
 from django.urls import reverse_lazy, reverse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
@@ -25,4 +25,11 @@ def check_answer(request, category_name, pk):
 			'error_message': "You did not select a choice...",
 		})
 	else:
-		return HttpResponseRedirect(reverse('trivia:question_page', args=(category_name, pk+1,)))
+		if Question.objects.filter(pk=pk+1).exists():
+			return HttpResponseRedirect(reverse('trivia:question_page', args=(category_name, pk+1,)))
+		else:
+			return HttpResponseRedirect(reverse('trivia:result'))
+
+
+class ResultPageView(TemplateView):
+	template_name = 'result.html'

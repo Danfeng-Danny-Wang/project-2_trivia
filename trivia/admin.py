@@ -19,7 +19,7 @@ class CategoryAdmin(admin.ModelAdmin):
 
 
 class QuestionAdmin(admin.ModelAdmin):
-	fields = ['question_text']
+	fields = ['question_text', 'category']
 	inlines = [ChoiceInline]
 
 

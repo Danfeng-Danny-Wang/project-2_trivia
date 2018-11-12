@@ -21,3 +21,7 @@
 		<button type="submit">Next</button>
 	</form>
 {% endblock %}
+
+{% block score %}
+	<h3>Score: <span>{{ request.session.score }}</span></h3>
+{% endblock %}

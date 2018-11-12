@@ -2,7 +2,7 @@
 
 {% block choice_content %}
 
-<h2>Ha! Your score is ...</h2>
+<h2>Ha! Your score is <span>{{ request.session.score }}</span></h2>
 
 <a href="{% url 'trivia:home' %}">Back to home</a>
 
